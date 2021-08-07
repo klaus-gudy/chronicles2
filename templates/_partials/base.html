@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="ui menu">
+        <div class="ui container">
+            <a href="" class="header item">logo</a>
+            <div class="right item">
+                <a href="{% url 'create' %}" class="ui primary button">create</a>
+
+                {% if request.user.is_authenticated %}
+                
+                <div class="ui simple dropdown item">
+                    user
+                    <div class="menu">
+                        <form action="" method="post" class="ui large form">
+                            <input type="submit" class="ui button">
+                        </form>
+                    </div>
+                </div>
+
+                {% else %}
+
+                <div class="ui item">
+                    <a href="" class="ui primary button">login</a>
+                </div>
+                <!-- <div class="ui item">
+                    <a href="" class="ui primary button">logout</a>
+                </div> -->
+                <div class="ui item">
+                    <a href="" class="ui primary button">register</a>
+                </div>
+
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="ui container">
+        {% block content %}
+
+
+         {% endblock %}
+
+    </div>
+
+    
+    
+</body>
+</html>
