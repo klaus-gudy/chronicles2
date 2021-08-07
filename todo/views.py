@@ -4,9 +4,19 @@ from .models import Todo
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-def index(request):
+from django.shortcuts import get_object_or_404
 
-    return render(request,  'todo/index.html')
+def index(request):
+    todos = Todo.objects.all()
+
+    complete = todos.filter(is_completed=True).count()
+    incomplete = todos.filter(is_completed=False).count()
+    all_count = todos.count()
+
+
+    context = {'todos':todos, 'complete':complete , 'incomplete':incomplete , 'all_count':all_count}
+
+    return render(request,  'todo/index.html', context)
   
 
 def create(request):
@@ -31,5 +41,8 @@ def create(request):
     return render(request,  'todo/create.html', context)    
 
 def details(request, id):
+    todo = get_object_or_404(Todo, pk = id)
 
-    return render(request,  'todo/details.html', {} )  
+    context = {'todo': todo}
+
+    return render(request,  'todo/details.html', context )  

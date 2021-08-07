@@ -1,6 +1,67 @@
 {% extends '_partials/base.html' %}
 
 {% block content %}
-<h1>welcome index</h1>
+<h1 class="ui header">welcome </h1>
+
+{% if todos %}
+
+<table class="ui table">
+    <thead>
+        <tr>
+            <th>title</th>
+            <th>description</th>
+            <th>completed</th>
+            <th>actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for todo in todos %}
+
+        <tr>
+            <td> {{todo.title}} </td>
+            <td> {{todo.description}} </td>
+            <!-- <td> {{todo.is_completed}} </td> -->
+            <td>
+                {% if todo.is_completed %}
+
+                yes <i class="check icon green"></i>
+
+                {% else %}
+
+                no
+
+                {% endif %}
+            </td>
+            <td>
+                <a href="{% url 'details' todo.pk %}" class="ui button"> <i class="eye icon"></i> </a>
+                <a href="" class="ui button"> <i class="pencil icon"></i> </a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th> <a href="">all {{all_count}}</a> </th>
+            <th> <a href="">{{incomplete}} remaining</a> </th>
+            <th> <a href="">{{complete}} completed</a> </th>
+        </tr>
+    </tfoot>
+    
+</table>
+
+
+{% else %}
+
+<div class="ui message">
+    <div class="header">
+        no items yet
+    </div>
+    <p>create now  <a href="{% url 'create' %}">add new</a></p>
+</div>
+
+{% endif %}
 
 {% endblock %}

@@ -1,6 +1,25 @@
 {% extends '_partials/base.html' %}
 {% block content %}
 
-<h1>details</h1>
+<h1 class="ui header">details</h1>
+
+<div class="ui card">
+    <div class="content">
+        <div class="header">{{todo.title}}</div>
+        <div class="meta">{{todo.created_at}}</div>
+        <div class="description"> <p>{{todo.description}}</p></div>
+    </div>
+
+    <div class="extra content">
+        {% if todo.is_completed %}
+        <p> <i class="check icon green"></i> completed at {{updated_at}}
+        {% else %}
+        not yet
+        </p>
+        {% endif %}
+        <a href="" class="ui button primary">edit</a>
+        <a href="" class="ui button red">delete</a>
+    </div>
+</div>
 
 {% endblock content %}
