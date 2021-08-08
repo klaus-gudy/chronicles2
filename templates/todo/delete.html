@@ -4,6 +4,8 @@
 
 <h1 class="ui header">delete todo</h1>
 
+{% include '_partials/message.html' %}
+
 <form action="{% url 'delete' todo.id %}" method="POST" class="ui form">
     {% csrf_token %}
 

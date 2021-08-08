@@ -3,11 +3,14 @@
 {% block content %}
 
 <h1>create</h1>
+
+{% include '_partials/message.html' %}
+
 <form action="{% url 'create' %}" method="POST" class="ui form">
     {% csrf_token %}
 
     {{form.as_p}}
-    
+
     <input type="submit" value="submit" class="ui button primary">
 </form>
 

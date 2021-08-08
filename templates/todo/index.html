@@ -3,6 +3,8 @@
 {% block content %}
 <h1 class="ui header">welcome </h1>
 
+{% include '_partials/message.html' %}
+
 {% if todos %}
 
 <table class="ui table">
@@ -35,7 +37,7 @@
             </td>
             <td>
                 <a href="{% url 'details' todo.pk %}" class="ui button"> <i class="eye icon"></i> </a>
-                <a href="" class="ui button"> <i class="pencil icon"></i> </a>
+                <a href="{% url 'edit' todo.pk %}" class="ui button"> <i class="pencil icon"></i> </a>
             </td>
         </tr>
 
