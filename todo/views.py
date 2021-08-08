@@ -46,3 +46,14 @@ def details(request, id):
     context = {'todo': todo}
 
     return render(request,  'todo/details.html', context )  
+
+def delete(request, id):
+    todo = get_object_or_404(Todo, pk = id)
+
+    context = {'todo': todo}
+
+    if request.method == "POST":
+        todo.delete()
+        return HttpResponseRedirect(reverse('index'))
+
+    return render(request,  'todo/delete.html', context )      
