@@ -2,7 +2,51 @@
 
 {% block content %}
 
-<h1>register</h1>
+
+<div class="ui grid">
+    <div class="four wide column">
+
+    </div>
+    <div class="eight wide column">
+        <div  class="ui middle aligned center aligned grid">
+            <div class="column mt-5">
+                <h2 class="ui header">
+                    <div class="content">registration</div>
+                </h2>
+
+                {% include '_partials/message.html' %}
+
+                <form action="{% url 'register' %}" method="post" class="ui form">
+                    {% csrf_token %}
+
+                    <div class="ui stacked segement">
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <input type="text" name="username" placeholder="username">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <input type="text" name="email" placeholder="email adress">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui left icon input">
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+                        </div>
+                        <button class="ui fluid large teal submit button">submit</button>
+                    </div>
+
+                </form>
+                <p class="ui message">have an account? <a href="{% url 'login' %}">login</a></p>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 
 

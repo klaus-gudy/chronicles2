@@ -24,17 +24,17 @@
                         </form>
                     </div>
                 </div>
+                <div class="ui item">
+                    <a href="{% url 'index' %}" class="ui primary button">logout</a>
+                </div>
 
                 {% else %}
 
                 <div class="ui item">
-                    <a href="" class="ui primary button">login</a>
+                    <a href="{% url 'login' %}" class="ui primary button">login</a>
                 </div>
-                <!-- <div class="ui item">
-                    <a href="" class="ui primary button">logout</a>
-                </div> -->
                 <div class="ui item">
-                    <a href="" class="ui primary button">register</a>
+                    <a href="{% url 'register' %}" class="ui primary button">register</a>
                 </div>
 
                 {% endif %}
